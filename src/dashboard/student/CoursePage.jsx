@@ -19,7 +19,7 @@ function CoursePage() {
     <>
       <PageHeader title={"Course"} />
       {purchasedCourses.length > 0 && (
-        <div className="px-8 py-4 rounded-md mb-4">
+        <div className="px-4 lg:px-8 py-4 rounded-md mb-4">
           <h2 className="text-lg font-semibold text-green-800">
             Purchased Courses
           </h2>
@@ -28,7 +28,7 @@ function CoursePage() {
           </div>
         </div>
       )}
-      <div className="px-8 py-4 rounded-md mb-4">
+      <div className="px-4 lg:px-8 py-4 rounded-md mb-4">
         <h2 className="text-lg font-semibold text-green-800">
           Recommended Courses
         </h2>

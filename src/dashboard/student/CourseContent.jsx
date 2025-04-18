@@ -48,7 +48,7 @@ function CourseContent() {
         <iframe
           src={url}
           title="PDF Viewer"
-          className="w-full h-full rounded-md"
+          className="w-full h-full rounded-md min-h-[50vh]"
         ></iframe>
       );
     }
@@ -80,7 +80,7 @@ function CourseContent() {
         <iframe
           src={url}
           title="PDF Viewer"
-          className="w-full h-full rounded-md"
+          className="w-full h-full rounded-md min-h-[50vh]"
         ></iframe>
       );
     }
@@ -116,7 +116,7 @@ function CourseContent() {
             </div>
           </div>
 
-          <div className="w-full h-full rounded-md overflow-auto video-box relative min-h-[50vh]">
+          <div className="w-full h-full rounded-md overflow-auto video-box relative">
             {renderContent()}
           </div>
         </div>
@@ -149,7 +149,7 @@ function CourseContent() {
 
           <div className="flex flex-col gap-2 items-end w-full">
             <p className="text-xs">10% Completed</p>
-            <div className="h-2 bg-green-300 relative w-full rounded-full overflow-hidden">
+            <div className="h-3 bg-green-300 relative w-full rounded-full overflow-hidden">
               <div className="absolute bg-green-700 left-0 w-[50%] h-full"></div>
             </div>
           </div>

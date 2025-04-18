@@ -5,7 +5,7 @@ import { Router } from "./Router.jsx";
 import "./index.css";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <div className="min-h-screen antialiased bg-neutral-50">
+    <div className="w-full antialiased bg-neutral-50">
       <RouterProvider router={Router} />
     </div>
   </StrictMode>

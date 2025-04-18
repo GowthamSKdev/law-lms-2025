@@ -6,7 +6,7 @@ function AnnouncementPage() {
     <>
       <div className="">
         <PageHeader title={"Announcement"} />
-        <div className="flex p-8 gap-8">
+        <div className="flex p-4 lg:p-8 gap-8">
           <div className=" flex-1 flex flex-col gap-6">
             <AnnouncementList />
           </div>

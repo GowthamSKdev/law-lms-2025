@@ -87,7 +87,7 @@ function BigCalendar() {
   };
 
   return (
-    <div className="react-Big-calendar p-8">
+    <div className="react-Big-calendar p-4 lg:p-8">
       <div className="main-calendar">
         <div className="flex justify-between items-center mb-4">
           <h5 className="text-xl font-semibold">Calendar</h5>

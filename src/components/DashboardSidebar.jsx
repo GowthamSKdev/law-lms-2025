@@ -70,12 +70,12 @@ function DashboardSidebar() {
   return (
     <>
       <div
-        className={`sticky top-0 left-0 z-40 h-screen flex flex-col duration-500 transition ease-in-out bg-neutral-100 ${
+        className={`sticky top-0 left-0 z-40 h-dvh flex flex-col duration-500 transition ease-in-out bg-neutral-100 ${
           isOpen ? "min-w-2xs" : ""
         }`}
       >
         <button
-          className={` size-10 rounded-full border-none flex items-center justify-center shadow absolute -right-5  top-2 cursor-pointer ${
+          className={`size-10 rounded-full border-none flex items-center justify-center shadow absolute -right-5  top-2 cursor-pointer ${
             isOpen ? "bg-green-600 text-white" : "bg-white"
           }`}
           onClick={() => setIsOpen((prev) => !prev)}
@@ -91,7 +91,7 @@ function DashboardSidebar() {
               <Link
                 key={navLink.label}
                 to={navLink.path}
-                className={`flex gap-2 px-4 py-2 items-center border-r-4 border-green-700/0 rounded-md  ${
+                className={`flex gap-2 lg:px-4 px-2 py-2 items-center border-r-4 border-green-700/0 rounded-md  ${
                   location.pathname === navLink.path
                     ? "border-green-700/100 text-green-700 bg-white  shadow-2xl"
                     : ""
@@ -105,7 +105,7 @@ function DashboardSidebar() {
               </Link>
             ))}
           </div>
-          <button className="flex items-center gap-2 hover:font-semibold hover:bg-green-600 px-4 py-2 rounded-md hover:text-white">
+          <button className="flex items-center gap-2 hover:font-semibold hover:bg-green-600 lg:px-4 px-2 py-2 rounded-md hover:text-white">
             <LogOutIcon />
             <span className={`font-medium ${isOpen ? "block" : "hidden"} `}>
               Logout

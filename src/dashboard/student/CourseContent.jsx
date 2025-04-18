@@ -48,7 +48,7 @@ function CourseContent() {
         <iframe
           src={url}
           title="PDF Viewer"
-          className="w-full h-full rounded-md min-h-[50vh]"
+          className="w-full h-full rounded-md"
         ></iframe>
       );
     }
@@ -80,7 +80,7 @@ function CourseContent() {
         <iframe
           src={url}
           title="PDF Viewer"
-          className="w-full h-full rounded-md min-h-[50vh]"
+          className="w-full h-full rounded-md"
         ></iframe>
       );
     }
@@ -100,9 +100,9 @@ function CourseContent() {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row-reverse bg-gray-200 min-h-[calc(100vh-4rem)]">
+    <div className="flex flex-col lg:flex-row-reverse bg-gray-200 h-full min-h-[calc(100vh-3.5rem)] w-full relative gap-4 p-4">
       {/* Right Side: Video/Content Area */}
-      <div className="flex-1 p-4">
+      <div className="flex-1">
         <div className="p-4 bg-white shadow-sm rounded-lg flex flex-col gap-4 h-full">
           <div className="flex justify-between items-center">
             <h2 className="text-lg font-semibold">{course.title}</h2>
@@ -123,8 +123,8 @@ function CourseContent() {
       </div>
 
       {/* Left Side: Sidebar */}
-      <div className="p-4 flex flex-col gap-4">
-        <div className="p-4 bg-white shadow-sm rounded-lg flex flex-col gap-2">
+      <div className=" flex flex-col gap-4">
+        <div className="p-4 bg-white w-full shadow-sm rounded-lg flex flex-col gap-2">
           <button
             className="flex items-center gap-2 text-green-800 font-semibold text-sm"
             onClick={() => navigate(-1)}
@@ -133,7 +133,7 @@ function CourseContent() {
             Courses
           </button>
 
-          <div className="h-40">
+          <div className="h-30">
             <img
               src={course.thumbnail}
               alt={course.title}
@@ -145,7 +145,7 @@ function CourseContent() {
             />
           </div>
 
-          <h2 className="text-lg font-semibold">{course.title}</h2>
+          <h2 className="text-base font-semibold">{course.title}</h2>
 
           <div className="flex flex-col gap-2 items-end w-full">
             <p className="text-xs">10% Completed</p>
@@ -155,7 +155,7 @@ function CourseContent() {
           </div>
         </div>
 
-        <div className="min-w-xs w-full bg-white flex-1 shadow-sm rounded-lg flex flex-col gap-2">
+        <div className="max-w-xs w-full bg-white flex-1 shadow-sm rounded-lg flex flex-col gap-2">
           <h3 className="text-base uppercase font-semibold px-4 py-3">
             Contents
           </h3>
@@ -172,7 +172,7 @@ export default CourseContent;
 
 const Accordion = ({ course, onSelectContent }) => {
   return (
-    <div className="flex flex-col lg:max-w-xs">
+    <div className="flex flex-col lg:max-w-xs w-full ">
       {course.lessons?.map((lesson, index) => (
         <AccordionItem key={index} title={lesson.title}>
           {lesson.sublessons?.map((sublesson, subIndex) => (

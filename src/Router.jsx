@@ -15,9 +15,26 @@ import Achievements from "./dashboard/student/Achievements";
 import BigCalendar from "./dashboard/student/BigCalendar";
 import ExamPage from "./dashboard/student/ExamPage";
 import CourseProgressReport from "./dashboard/student/CourseProgressReport";
+import Navbar from "./components/Navbar";
+import Login from "./authentication/Login";
 
 export const Router = createBrowserRouter([
-  { path: "/", element: <Home /> },
+  {
+    path: "/",
+    element: (
+      <>
+        <div className="flex flex-col h-screen bg-gray-100 relative">
+          <Navbar />
+          <Outlet />
+        </div>
+      </>
+    ),
+    children: [{ index: true, element: <Home /> }],
+  },
+  {
+    path: "login",
+    element: <Login />,
+  },
   {
     path: "admin",
     element: <AdminLayout />,

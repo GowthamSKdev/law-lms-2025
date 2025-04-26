@@ -1,72 +1,20 @@
-import {
-  Award,
-  BookOpen,
-  Calendar,
-  ClipboardCheck,
-  ClipboardPenLine,
-  HandHelping,
-  Home,
-  LogOutIcon,
-  Megaphone,
-  Menu,
-  MessageCircleQuestion,
-  MessagesSquare,
-  X,
-} from "lucide-react";
+import { LogOutIcon, Menu, X } from "lucide-react";
 import { useState } from "react";
-import { Link, useLocation } from "react-router";
-const NavLinks = [
-  {
-    path: "/student",
-    label: "Dashboard",
-    icon: <Home />,
-  },
+import { Link, useLocation, useNavigate } from "react-router";
+import { Logout } from "../service/api";
 
-  {
-    path: "/student/course",
-    label: "Courses",
-    icon: <BookOpen />,
-  },
-  {
-    path: "/student/calender",
-    label: "Calender",
-    icon: <Calendar />,
-  },
-  {
-    path: "/student/exam",
-    label: "Exam",
-    icon: <ClipboardPenLine />,
-  },
-  {
-    path: "/student/progressReport",
-    label: "Course Progress Report",
-    icon: <ClipboardCheck />,
-  },
-  {
-    path: "/student/achievements",
-    label: "Achievements",
-    icon: <Award />,
-  },
-  {
-    path: "/student/announcement",
-    label: "Announcement",
-    icon: <Megaphone />,
-  },
-  {
-    path: "#",
-    label: "Forum",
-    icon: <MessagesSquare />,
-  },
-
-  {
-    path: "#",
-    label: "Query",
-    icon: <MessageCircleQuestion />,
-  },
-];
-function DashboardSidebar() {
+function DashboardSidebar({ NavLinks }) {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const HandleLogout = async () => {
+    const res = await Logout();
+    if (res) {
+      navigate("/");
+    } else {
+      console.log("Logout failed");
+    }
+  };
   return (
     <>
       <div
@@ -105,7 +53,10 @@ function DashboardSidebar() {
               </Link>
             ))}
           </div>
-          <button className="flex items-center gap-2 hover:font-semibold hover:bg-green-600 lg:px-4 px-2 py-2 rounded-md hover:text-white">
+          <button
+            className="flex items-center gap-2 hover:font-semibold hover:bg-green-600 lg:px-4 px-2 py-2 rounded-md hover:text-white"
+            onClick={() => HandleLogout()}
+          >
             <LogOutIcon />
             <span className={`font-medium ${isOpen ? "block" : "hidden"} `}>
               Logout

@@ -1,9 +1,16 @@
 import { createBrowserRouter, Outlet } from "react-router";
 // Landing
+import Navbar from "./components/Navbar";
 import Home from "./Home/Home";
+// Authentication
+import Login from "./authentication/Login";
 // Admin
 import AdminLayout from "./dashboard/admin/AdminLayout";
 import AdminDashboard from "./dashboard/admin/AdminDashboard";
+import UserManagement from "./dashboard/admin/UserManagement";
+import AdminCoursePage from "./dashboard/admin/AdminCoursePage";
+import AddNewCourse from "./dashboard/admin/AddNewCourse";
+import EditCourse from "./dashboard/admin/EditCourse";
 // Student
 import StudentLayout from "./dashboard/student/StudentLayout";
 import StudentDashboard from "./dashboard/student/StudentDashboard";
@@ -15,8 +22,10 @@ import Achievements from "./dashboard/student/Achievements";
 import BigCalendar from "./dashboard/student/BigCalendar";
 import ExamPage from "./dashboard/student/ExamPage";
 import CourseProgressReport from "./dashboard/student/CourseProgressReport";
-import Navbar from "./components/Navbar";
-import Login from "./authentication/Login";
+import ForumPage from "./components/ForumPage";
+import { GetAllCourses, GetAllUsers } from "./service/api";
+import AdminAnnouncement from "./dashboard/admin/AdminAnnouncement";
+import { Suspense } from "react";
 
 export const Router = createBrowserRouter([
   {
@@ -38,7 +47,43 @@ export const Router = createBrowserRouter([
   {
     path: "admin",
     element: <AdminLayout />,
-    children: [{ path: "", element: <AdminDashboard /> }],
+    children: [
+      { path: "", element: <AdminDashboard /> },
+      {
+        path: "users",
+        element: <UserManagement />,
+        loader: GetAllUsers,
+        errorElement: <>Error</>,
+      },
+      {
+        path: "courses",
+        element: <Outlet />,
+        children: [
+          {
+            index: true,
+            element: <AdminCoursePage />,
+            loader: GetAllCourses,
+            errorElement: <>Error</>,
+          },
+          {
+            path: "new",
+            element: <AddNewCourse />,
+          },
+          {
+            path: "edit/:id",
+            element: <EditCourse />,
+          },
+        ],
+      },
+      {
+        path: "announcement",
+        element: <AdminAnnouncement />,
+      },
+      {
+        path: "forum",
+        element: <ForumPage />,
+      },
+    ],
   },
   {
     path: "student",
@@ -64,6 +109,10 @@ export const Router = createBrowserRouter([
             path: ":id/content",
             element: <CourseContent />,
           },
+          {
+            path: ":id/test",
+            element: <div className="">test</div>,
+          },
         ],
       },
       {
@@ -85,6 +134,10 @@ export const Router = createBrowserRouter([
       {
         path: "progressReport",
         element: <CourseProgressReport />,
+      },
+      {
+        path: "forum",
+        element: <ForumPage />,
       },
     ],
   },

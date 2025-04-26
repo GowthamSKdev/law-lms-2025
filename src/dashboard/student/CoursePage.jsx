@@ -1,18 +1,35 @@
+import { useEffect, useState } from "react";
 import PageHeader from "../../components/PageHeader";
-import courses from "../../api/course.json";
+import TemplateCourses from "../../api/course.json";
 import CourseList from "../../components/CourseList";
+import { GetAllCourses } from "../../service/api";
 
 function CoursePage() {
+  const [courses, setCourses] = useState([]);
+  useEffect(() => {
+    const fetchCourse = async () => {
+      try {
+        const data = await GetAllCourses();
+        setCourses(data);
+      } catch (error) {
+        console.error();
+        error;
+      }
+    };
+
+    fetchCourse();
+  }, []);
+
   const purchasedCoursesIds = JSON.parse(
     localStorage.getItem("purchasedCourses") || "[]"
   );
 
   const purchasedCourses = courses.filter((course) =>
-    purchasedCoursesIds.includes(course.id)
+    purchasedCoursesIds.includes(course._id)
   );
 
   const unPurchasedCourses = courses.filter(
-    (course) => !purchasedCoursesIds.includes(course.id)
+    (course) => !purchasedCoursesIds.includes(course._id)
   );
 
   return (

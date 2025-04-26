@@ -18,16 +18,16 @@ function CourseDetail() {
   useEffect(() => {
     const purchasedCourses =
       JSON.parse(localStorage.getItem("purchasedCourses")) || [];
-    if (purchasedCourses.includes(course.id)) {
+    if (purchasedCourses.includes(course._id)) {
       setIsPurchased(true);
     }
-  }, [course.id]);
+  }, [course._id]);
 
   const handlePurchase = () => {
     const purchasedCourses =
       JSON.parse(localStorage.getItem("purchasedCourses")) || [];
-    if (!purchasedCourses.includes(course.id)) {
-      purchasedCourses.push(course.id);
+    if (!purchasedCourses.includes(course._id)) {
+      purchasedCourses.push(course._id);
       localStorage.setItem(
         "purchasedCourses",
         JSON.stringify(purchasedCourses)
@@ -56,7 +56,7 @@ function CourseDetail() {
               e.target.src = "/vite.svg";
             }}
           />
-          <div className="absolute bottom-0 bg-gradient-to-t from-green-900/60 from-10% to-green-50/0 z-10 w-full h-full"></div>
+          <div className="absolute bottom-0 bg-gradient-to-t from-neutral-900/60 from-10% to-green-50/0 z-10 w-full h-full"></div>
 
           <div className="absolute bottom-10 left-10 z-10 text-white pr-4">
             <h2 className="text-2xl font-semibold">{course.title}</h2>
